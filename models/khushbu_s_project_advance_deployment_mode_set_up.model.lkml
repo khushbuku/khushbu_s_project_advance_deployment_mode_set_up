@@ -101,11 +101,14 @@ explore: inventory_items {
 }
 
 explore: orders {
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
+  always_filter: {
+    filters: [orders.status: "complete"]
   }
+ # join: users {
+  #  type: left_outer
+  #  sql_on: ${orders.user_id} = ${users.id} ;;
+   # relationship: many_to_one
+  #}
 }
 
 explore: order_items {
@@ -134,31 +137,29 @@ explore: order_items {
   }
 }
 
-explore: order_items_vijaya {
-  join: orders {
-    type: left_outer
-    sql_on: ${order_items_vijaya.order_id} = ${orders.id} ;;
-    relationship: many_to_one
-  }
+# explore: order_items_vijaya {
+#   #always_filter: {
+#   # filters: [orders.status: "complete"]
+# # }
+# #extends: [orders]
+# # join: inventory_items {
+#   #  type: left_outer
+#   # sql_on: ${order_items_vijaya.inventory_item_id} = ${inventory_items.id} ;;
+#     #relationship: many_to_one
+#   #}
 
-  join: inventory_items {
-    type: left_outer
-    sql_on: ${order_items_vijaya.inventory_item_id} = ${inventory_items.id} ;;
-    relationship: many_to_one
-  }
+#   join: users {
+#     type: left_outer
+#     sql_on: ${orders.user_id} = ${users.id} ;;
+#     relationship: many_to_one
+#   }
 
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: products {
-    type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
-    relationship: many_to_one
-  }
-}
+#   join: products {
+#     type: left_outer
+#     sql_on: ${inventory_items.product_id} = ${products.id} ;;
+#     relationship: many_to_one
+#   }
+# }
 
 explore: order_status_vijaya {}
 
