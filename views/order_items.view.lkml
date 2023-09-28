@@ -2,6 +2,57 @@ view: order_items {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
+parameter: month {
+  type: unquoted
+  allowed_value: {
+    label: "January"
+    value: "01"
+  }
+  allowed_value: {
+    label: "February"
+    value: "02"
+  }
+  allowed_value: {
+    label: "March"
+    value: "03"
+  }
+  allowed_value: {
+    label: "April"
+    value: "04"
+  }
+  allowed_value: {
+    label: "May"
+    value: "05"
+  }
+  allowed_value: {
+    label: "June"
+    value: "06"
+  }
+  allowed_value: {
+    label: "July"
+    value: "07"
+  }
+  allowed_value: {
+    label: "August"
+    value: "08"
+  }
+  allowed_value: {
+    label: "September"
+    value: "09"
+  }
+  allowed_value: {
+    label: "October"
+    value: "10"
+  }
+  allowed_value: {
+    label: "November"
+    value: "11"
+  }
+  allowed_value: {
+    label: "December"
+    value: "12"
+  }
+}
   dimension: id {
     primary_key: yes
     type: number
